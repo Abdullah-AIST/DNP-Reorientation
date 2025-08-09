@@ -21,6 +21,13 @@ import { ImageComparison } from "../components/ImageComparison.tsx";
 
 import outside from "../assets/Supplementary Video.mp4";
 
+import ChocoBox from "../assets/Reorientation_ChocoBox.webm";
+import ChocoBox_Rotated from "../assets/Reorientation_ChocoBox_Rotated.webm";
+import TissueBox from "../assets/Reorientation_TissueBox.webm";
+import TeaBox from "../assets/Reorientation_TeaBox.webm";
+import WoodBlocks from "../assets/Reorientation_woodBlocks.webm";
+
+
 import transformer from "../assets/transformer.webp";
 import Splat from "../components/Splat.tsx"
 import dogsDiffc from "../assets/dogs-diffc.png"
@@ -112,6 +119,9 @@ Randomly swapping objects during exection of Optimal policy optimized for the Wo
   <span slot="caption">Optimal Policy [32/32]</span>
 </Figure>
 <h3 style="text-align: center">--------------- (ChocoBox) ---------------</h3>
+
+<Video source={ChocoBox} />
+
 <ThreeColumns>
   <Figure slot="left">
     <YouTubeVideo slot="figure" videoId="otH-QwhghRY" />
@@ -142,6 +152,9 @@ Randomly swapping objects during exection of Optimal policy optimized for the Wo
 </ThreeColumns>
 
 <h3 style="text-align: center">--------------- (ChocoBox-Rotated) ---------------</h3>
+
+<Video source={ChocoBox_Rotated} />
+
 <ThreeColumns>
   <Figure slot="left">
     <YouTubeVideo slot="figure" videoId="GWcC6fm_8Pg" />
@@ -172,6 +185,9 @@ Randomly swapping objects during exection of Optimal policy optimized for the Wo
 </ThreeColumns>
 
 <h3 style="text-align: center">--------------- (TissueBox) ---------------</h3>
+
+<Video source={TissueBox} />
+
 <ThreeColumns>
   <Figure slot="left">
     <YouTubeVideo slot="figure" videoId="VQdefa-FclI" />
@@ -202,6 +218,9 @@ Randomly swapping objects during exection of Optimal policy optimized for the Wo
 </ThreeColumns>
 
 <h3 style="text-align: center">--------------- (WoodBlocks) ---------------</h3>
+
+<Video source={WoodBlocks} />
+
 <ThreeColumns>
   <Figure slot="left">
     <YouTubeVideo slot="figure" videoId="bO-e2VA-3fg" />
@@ -232,6 +251,8 @@ Randomly swapping objects during exection of Optimal policy optimized for the Wo
 </ThreeColumns>
 
 <h3 style="text-align: center">--------------- (TeaBox-40g) ---------------</h3>
+<Video source={TeaBox} />
+
 <ThreeColumns>
   <Figure slot="left">
     <YouTubeVideo slot="figure" videoId="KlxmQVg7zSg" />
