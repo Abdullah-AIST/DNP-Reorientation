@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/Layout.astro
-title: Research Project Page Template
-description: Simple project page template for your research paper, built with Astro and Tailwind CSS
+title: "Learning Dynamic Non-Prehensile Object Reorientation via Reinforcement Learning"
+description: A project page for DNP-Reorientation
 favicon: favicon.svg
 thumbnail: screenshot-light.png
 ---
@@ -13,12 +13,30 @@ import SmallCaps from "../components/SmallCaps.astro";
 import Figure from "../components/Figure.astro";
 import Image from "../components/Image.astro";
 import TwoColumns from "../components/TwoColumns.astro";
+import ThreeColumns from "../components/ThreeColumns.astro";
 import YouTubeVideo from "../components/YouTubeVideo.astro";
 import LaTeX from "../components/LaTeX.astro";
 
 import { ImageComparison } from "../components/ImageComparison.tsx";
 
-import outside from "../assets/outside.mp4";
+import outside from "../assets/Supplementary Video.mp4";
+import pyb_vid from "../assets/Pybullet_Collision.webm";
+
+import video_woodBlock from "../assets/woodBlock.webm"
+import video_chips from "../assets/chips.webm"
+import video_crackerBox from "../assets/crackerBox.webm"
+import video_bleachCleanser from "../assets/bleachCleanser.webm"
+import video_tallBox from "../assets/tallBox.webm"
+import video_mustardBottle from "../assets/mustardBottle.webm"
+
+import video_powerDrill from "../assets/powerDrill.webm"
+import video_pitcher from "../assets/pitcher.webm"
+import video_bowl from "../assets/bowl.webm"
+
+import video_multi2 from "../assets/multi2.webm"
+import video_sysID from "../assets/sysID.webm"
+import video_woodblock2 from "../assets/woodblock2.webm"
+
 import transformer from "../assets/transformer.webp";
 import Splat from "../components/Splat.tsx"
 import dogsDiffc from "../assets/dogs-diffc.png"
@@ -33,35 +51,43 @@ export const components = {pre: CodeBlock, table: Table}
   title={frontmatter.title}
   authors={[
     {
-      name: "Roman Hauksson",
-      url: "https://roman.technology",
-      institution: "Independent",
+      name: "Abdullah Mustafa",
+      notes: ["*"],
+    },
+    {
+      name: "Ryo Hanai",
+      notes: ["*"],
+    },
+    {
+      name: "Ixchel Ramirez",
+      notes: ["*"],
+    },
+        {
+      name: "Floris Erich",
+      notes: ["*"],
+    },
+        {
+      name: "Ryoichi Nakajo",
+      notes: ["*"],
+    },
+        {
+      name: "Yukiyasu Domae",
+      notes: ["*"],
+    },
+    {
+      name: "Tetsuya Ogata",
       notes: ["*", "†"],
-    },
-    {
-      name: "Author Two",
-      institution: "Institution Two",
-      notes: ["*", "†"],
-    },
-    {
-      name: "Author Three",
-      institution: "Institution Three",
-      notes: ["†"],
-    },
-    {
-      name: "Author Four",
-      institution: "Institution Four",
     },
   ]}
-  conference="Conference Name"
+  conference="IEEE/SICE International Symposium on System Integration (SII 2026)"
   notes={[
     {
       symbol: "*",
-      text: "author note one",
+      text: "National Institute of Advanced Industrial Science and Technology",
     },
     {
       symbol: "†",
-      text: "author note two",
+      text: "Waseda University",
     },
   ]}
   links={[
@@ -72,18 +98,13 @@ export const components = {pre: CodeBlock, table: Table}
     },
     {
       name: "Code",
-      url: "https://github.com/RomanHauksson/academic-project-astro-template",
+      url: "https://github.com/Abdullah-AIST/DNP-Reorientation",
       icon: "ri:github-line",
     },
     {
       name: "arXiv",
       url: "",
       icon: "academicons:arxiv",
-    },
-    {
-      name: "Bluesky",
-      url: "",
-      icon: "ri:bluesky-line"
     }
   ]}
   />
@@ -94,78 +115,177 @@ export const components = {pre: CodeBlock, table: Table}
 
 ## Abstract
 
-This is a live demo for a template you can use to create a simple project page for your research paper. See the code for the template and instructions on how to use it yourself [here](https://github.com/RomanHauksson/academic-project-astro-template). It's made with the [Astro web framework](https://astro.build/) and styled with [Tailwind CSS](https://tailwindcss.com/). You write the content in [MDX](https://mdxjs.com/), which enables markdown formatting like **bold**, _italics_, and ~strikethrough~, as well as custom components like <SmallCaps>small caps.</SmallCaps>
+This work proposes a learning-based approach to dynamic non-prehensile object transportation (e.g., "Waiter's Problem"). Model-based approaches start with a strong dynamic grasping assumption and optimize trajectories under such constraints. However, this optimization process is prone to failure, slow convergence, or suboptimal solutions due to the constraints imposed by dynamic grasping. To address these limitations, we propose a motion-planning neural policy learned via reinforcement learning. The task is formulated as a Markov decision problem, with carefully designed observation space, action space, and reward formulation. Acceleration-based action was crucial for smooth trajectory generation and sim2real transferability. Prior to training, the sim2real robot dynamics gap was minimized through system identification. Towards generalization to wide range of objects, we randomized object size, friction, mass, center of mass, and initial pose during training. By curating the randomization process, different policies are obtained including an "Optimal" policy with full observability and a "Robust" policy under partial observability of object inertia and pose. The trained policy is used for offline trajectory planning, resulting in fast and robust trajectories successfully deployed in both simulated and physical environments. Both our "Optimal" and "Robust" policies had higher peak velocities and accelerations, and shorter reaching times compared to the model-based baseline.
 
 </HighlightedSection>
 
-## Figures
-
-Use the figure component to display images, videos, equations, or any other element, with an optional caption.
-
+# Real-world Validation
+<h3 style="text-align: center">------------------------------</h3>
+## Transport Anything
+Randomly swapping objects during exection of Optimal policy optimized for the WoodBlock. Learned trajectories is stable under arbitrary objects. 
 <Figure>
-  <Image slot="figure" source={transformer} altText="Diagram of the transformer deep learning architecture." />
-  <span slot="caption">Diagram of the transformer deep learning architecture.</span>
+  <YouTubeVideo slot="figure" videoId="otH-QwhghRY" />
+  <span slot="caption">Optimal Policy [32/32]</span>
 </Figure>
-
-## Image comparison slider
-
-An interactive, accessible slider component with keyboard navigation.
-<Figure>
-  <ImageComparison slot="figure" client:load imageUrlOne={dogsDiffc.src} imageUrlTwo={dogsTrue.src} altTextOne="Photo of two dogs running side-by-side in shallow water, lossily compressed using the DiffC algorithm" altTextTwo="Original photo of two dogs running side-by-side in shallow water" />
-  <span slot="caption">A photo of two dogs running side-by-side in shallow water, lossily compressed using the <a href="https://jeremyiv.github.io/diffc-project-page/">DiffC algorithm</a>.</span>
-</Figure>
-
-## Two columns
-
-Use the two columns component to display two columns of content. In this example, the first column contains a figure with a YouTube video and the second column contains a figure with a custom [React](https://react.dev/) component. By default, they display side by side, but if the screen is narrow enough (for example, on mobile), they're arranged vertically.
-
-<TwoColumns>
+<h3 style="text-align: center">--------------- (ChocoBox) ---------------</h3>
+<ThreeColumns>
   <Figure slot="left">
-    <YouTubeVideo slot="figure" videoId="wjZofJX0v4M" />
-    <span slot="caption">Take a look at this YouTube video.</span>
+    <YouTubeVideo slot="figure" videoId="otH-QwhghRY" />
+    <span slot="caption">Y-Axis|CCW|90 [7/10]</span>
+  </Figure>
+  <Figure slot="center">
+    <YouTubeVideo slot="figure" videoId="5Z9pR4B_U5I" />
+    <span slot="caption">X-Axis|CCW|90 [10/10]</span>
   </Figure>
   <Figure slot="right">
-    <Splat slot="figure" client:idle />
-    <span slot="caption">Now look at this <a href="https://en.wikipedia.org/wiki/Gaussian_splatting">Gaussian splat</a>, rendered with a React component.</span>
+    <YouTubeVideo slot="figure" videoId="41Z7Le6i3jc" />
+    <span slot="caption">Z-Axis|CCW|90 [10/10]</span>
   </Figure>
-</TwoColumns>
+</ThreeColumns>
+<ThreeColumns>
+  <Figure slot="left">
+    <YouTubeVideo slot="figure" videoId="mrmfAB7lJhM" />
+    <span slot="caption">Y-Axis|CCW|180 [10/10]</span>
+  </Figure>
+  <Figure slot="center">
+    <YouTubeVideo slot="figure" videoId="FraR7lEssXk" />
+    <span slot="caption">X-Axis|CCW|180 [10/10]</span>
+  </Figure>
+  <Figure slot="right">
+    <YouTubeVideo slot="figure" videoId="-rV13BD_NoI" />
+    <span slot="caption">Z-Axis|CW|90 [10/10]</span>
+  </Figure>
+</ThreeColumns>
 
-## Heading levels
+<h3 style="text-align: center">--------------- (ChocoBox-Rotated) ---------------</h3>
+<ThreeColumns>
+  <Figure slot="left">
+    <YouTubeVideo slot="figure" videoId="GWcC6fm_8Pg" />
+    <span slot="caption">Y-Axis|CCW|90 [10/10]</span>
+  </Figure>
+  <Figure slot="center">
+    <YouTubeVideo slot="figure" videoId="6nI6-9uYJ5E" />
+    <span slot="caption">X-Axis|CCW|90 [10/10]</span>
+  </Figure>
+  <Figure slot="right">
+    <YouTubeVideo slot="figure" videoId="ZsvtgH7j72Q" />
+    <span slot="caption">Z-Axis|CCW|90 [10/10]</span>
+  </Figure>
+</ThreeColumns>
+<ThreeColumns>
+  <Figure slot="left">
+    <YouTubeVideo slot="figure" videoId="ZndTpxqa8e4" />
+    <span slot="caption">Y-Axis|CCW|180 [2/10]</span>
+  </Figure>
+  <Figure slot="center">
+    <YouTubeVideo slot="figure" videoId="4hOv3ape7Y8" />
+    <span slot="caption">X-Axis|CCW|180 [4/10]</span>
+  </Figure>
+  <Figure slot="right">
+    <YouTubeVideo slot="figure" videoId="xKixbfABojY" />
+    <span slot="caption">Z-Axis|CW|90 [10/10]</span>
+  </Figure>
+</ThreeColumns>
 
-Use headings to divide your content into sections.
+<h3 style="text-align: center">--------------- (TissueBox) ---------------</h3>
+<ThreeColumns>
+  <Figure slot="left">
+    <YouTubeVideo slot="figure" videoId="VQdefa-FclI" />
+    <span slot="caption">Y-Axis|CCW|90 [7/10]</span>
+  </Figure>
+  <Figure slot="center">
+    <YouTubeVideo slot="figure" videoId="jTcQ_SMk9hQ" />
+    <span slot="caption">X-Axis|CCW|90 [6/10]</span>
+  </Figure>
+  <Figure slot="right">
+    <YouTubeVideo slot="figure" videoId="N3jIXrOsBNg" />
+    <span slot="caption">Z-Axis|CCW|90 [4/10]</span>
+  </Figure>
+</ThreeColumns>
+<ThreeColumns>
+  <Figure slot="left">
+    <YouTubeVideo slot="figure" videoId="drf-98sgZ28" />
+    <span slot="caption">Y-Axis|CCW|180 [10/10]</span>
+  </Figure>
+  <Figure slot="center">
+    <YouTubeVideo slot="figure" videoId="1Rc_rZ360n0" />
+    <span slot="caption">X-Axis|CCW|180 [9/10]</span>
+  </Figure>
+  <Figure slot="right">
+    <YouTubeVideo slot="figure" videoId="IjVU0iMxS8A" />
+    <span slot="caption">Z-Axis|CW|90 [9/10]</span>
+  </Figure>
+</ThreeColumns>
 
-### Heading 3
+<h3 style="text-align: center">--------------- (WoodBlocks) ---------------</h3>
+<ThreeColumns>
+  <Figure slot="left">
+    <YouTubeVideo slot="figure" videoId="bO-e2VA-3fg" />
+    <span slot="caption">Y-Axis|CCW|90 [6/10]</span>
+  </Figure>
+  <Figure slot="center">
+    <YouTubeVideo slot="figure" videoId="zS8Vy51Gm-0" />
+    <span slot="caption">X-Axis|CCW|90 [8/10]</span>
+  </Figure>
+  <Figure slot="right">
+    <YouTubeVideo slot="figure" videoId="b9t3wh3qNLY" />
+    <span slot="caption">Z-Axis|CCW|90 [1/10]</span>
+  </Figure>
+</ThreeColumns>
+<ThreeColumns>
+  <Figure slot="left">
+    <YouTubeVideo slot="figure" videoId="C0dZw5QNUbo" />
+    <span slot="caption">Y-Axis|CCW|180 [0/10]</span>
+  </Figure>
+  <Figure slot="center">
+    <YouTubeVideo slot="figure" videoId="LzREyvm7h9U" />
+    <span slot="caption">X-Axis|CCW|180 [0/10]</span>
+  </Figure>
+  <Figure slot="right">
+    <YouTubeVideo slot="figure" videoId="HmdTiE5pZws" />
+    <span slot="caption">Z-Axis|CW|90 [3/10]</span>
+  </Figure>
+</ThreeColumns>
 
-Go down a level to heading 3...
+<h3 style="text-align: center">--------------- (TeaBox-40g) ---------------</h3>
+<ThreeColumns>
+  <Figure slot="left">
+    <YouTubeVideo slot="figure" videoId="KlxmQVg7zSg" />
+    <span slot="caption">Y-Axis|CCW|90 [10/10]</span>
+  </Figure>
+  <Figure slot="center">
+    <YouTubeVideo slot="figure" videoId="ukG_kEitNHk" />
+    <span slot="caption">Y-Axis|CCW|180 [5/10]</span>
+  </Figure>
+  <Figure slot="right">
+    <YouTubeVideo slot="figure" videoId="evSoU-eTDNY" />
+    <span slot="caption">X-Axis|CCW|90 [1/10]</span>
+  </Figure>
+</ThreeColumns>
 
-#### Heading 4
+<h3 style="text-align: center">--------------- (TeaBox-200g) ---------------</h3>
+<ThreeColumns>
+  <Figure slot="left">
+    <YouTubeVideo slot="figure" videoId="iXRGBz7Khng" />
+    <span slot="caption">Y-Axis|CCW|90 [8/10]</span>
+  </Figure>
+  <Figure slot="center">
+    <YouTubeVideo slot="figure" videoId="evSoU-eTDNY" />
+    <span slot="caption">Y-Axis|CCW|180 [2/10]</span>
+  </Figure>
+  <Figure slot="right">
+    <YouTubeVideo slot="figure" videoId="x2MUb9JDJhE" />
+    <span slot="caption">X-Axis|CCW|90 [10/10]</span>
+  </Figure>
+</ThreeColumns>
 
-...and down again to heading 4.
-
-## LaTeX
-
-You can also add LaTeX formulas, rendered during the build process using [KaTeX](https://katex.org/) so they're quick to load for visitors of your project page. You can write them inline, like this: <LaTeX inline formula="a^2 + b^2 = c^2" />. Or, you can write them as a block:
-
-<LaTeX formula="\int_a^b f(x) dx" />
-
-## Tables
-
-You can add simple tables using [GitHub Flavored Markdown syntax](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-tables):
-
-| Model | Accuracy | F1 score | Training time (hours) |
-| :--- | :---: | :---: | :---: |
-| BERT-base | 0.89 | 0.87 | 4.5 |
-| RoBERTa-large | 0.92 | 0.91 | 7.2 |
-| DistilBERT | 0.86 | 0.84 | 2.1 |
-| XLNet | 0.90 | 0.89 | 6.8 |
 
 ## BibTeX citation
 
 ```bibtex
-@misc{roman2024academic,
-  author = "{Roman Hauksson}",
-  title = "Academic Project Page Template",
-  year = "2024",
-  howpublished = "\url{https://research-template.roman.technology}",
+@misc{DNP_Reorientation_SII2026,
+  author = "{Abdullah Mustafa and Ryo Hanai and Ixchel Ramirez and Floris Erich and Ryoichi Nakajo and Yukiyasu Domae and Tetsuya Ogata}",
+  title = "Learning Dynamic Non-Prehensile Object Reorientation via Reinforcement Learning",
+  year = "2026",
 }
 ```
