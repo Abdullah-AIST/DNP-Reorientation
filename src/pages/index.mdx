@@ -19,13 +19,18 @@ import LaTeX from "../components/LaTeX.astro";
 
 import { ImageComparison } from "../components/ImageComparison.tsx";
 
-import outside from "../assets/Supplementary Video.mp4";
+import outside from "../assets/SII2026_supp.mp4";
 
 import ChocoBox from "../assets/Reorientation_ChocoBox.webm";
 import ChocoBox_Rotated from "../assets/Reorientation_ChocoBox_Rotated.webm";
 import TissueBox from "../assets/Reorientation_TissueBox.webm";
 import TeaBox from "../assets/Reorientation_TeaBox.webm";
 import WoodBlocks from "../assets/Reorientation_woodBlocks.webm";
+
+import ChocoBox_real from "../assets/DNPR_chocoBox.mp4"
+import ChocoBox_Rotated_real from "../assets/DNPR_chocoBox_Rotated.mp4"
+import TissueBox_real from "../assets/DNPR_TissueBox.mp4"
+
 
 
 import transformer from "../assets/transformer.webp";
@@ -110,17 +115,11 @@ This work proposes a learning-based approach to dynamic non-prehensile object tr
 
 </HighlightedSection>
 
-# Real-world Validation
-<h3 style="text-align: center">------------------------------</h3>
-## Transport Anything
-Randomly swapping objects during exection of Optimal policy optimized for the WoodBlock. Learned trajectories is stable under arbitrary objects. 
-<Figure>
-  <YouTubeVideo slot="figure" videoId="otH-QwhghRY" />
-  <span slot="caption">Optimal Policy [32/32]</span>
-</Figure>
 <h3 style="text-align: center">--------------- (ChocoBox) ---------------</h3>
 
-<Video source={ChocoBox} />
+  <Video source={ChocoBox} />
+  <Video source={ChocoBox_real} />
+
 
 <ThreeColumns>
   <Figure slot="left">
@@ -154,6 +153,7 @@ Randomly swapping objects during exection of Optimal policy optimized for the Wo
 <h3 style="text-align: center">--------------- (ChocoBox-Rotated) ---------------</h3>
 
 <Video source={ChocoBox_Rotated} />
+<Video source={ChocoBox_Rotated_real} />
 
 <ThreeColumns>
   <Figure slot="left">
@@ -187,6 +187,7 @@ Randomly swapping objects during exection of Optimal policy optimized for the Wo
 <h3 style="text-align: center">--------------- (TissueBox) ---------------</h3>
 
 <Video source={TissueBox} />
+<Video source={TissueBox_real} />
 
 <ThreeColumns>
   <Figure slot="left">
