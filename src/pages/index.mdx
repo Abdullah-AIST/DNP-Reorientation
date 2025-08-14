@@ -111,8 +111,7 @@ export const components = {pre: CodeBlock, table: Table}
 
 ## Abstract
 
-This work proposes a learning-based approach to dynamic non-prehensile object transportation (e.g., "Waiter's Problem"). Model-based approaches start with a strong dynamic grasping assumption and optimize trajectories under such constraints. However, this optimization process is prone to failure, slow convergence, or suboptimal solutions due to the constraints imposed by dynamic grasping. To address these limitations, we propose a motion-planning neural policy learned via reinforcement learning. The task is formulated as a Markov decision problem, with carefully designed observation space, action space, and reward formulation. Acceleration-based action was crucial for smooth trajectory generation and sim2real transferability. Prior to training, the sim2real robot dynamics gap was minimized through system identification. Towards generalization to wide range of objects, we randomized object size, friction, mass, center of mass, and initial pose during training. By curating the randomization process, different policies are obtained including an "Optimal" policy with full observability and a "Robust" policy under partial observability of object inertia and pose. The trained policy is used for offline trajectory planning, resulting in fast and robust trajectories successfully deployed in both simulated and physical environments. Both our "Optimal" and "Robust" policies had higher peak velocities and accelerations, and shorter reaching times compared to the model-based baseline.
-
+This work proposes a learning-based approach to dynamic non-prehensile object reorientation, enabling fast reorientation of large, grasp-infeasible objects within a constrained task space using uni-manual manipulation. Our policy is trained in simulation via reinforcement learning, utilizing a carefully designed observation space, action space, and reward function to reorient randomly sized cuboids with varied physical properties. Given an object model and a target rotation direction, the policy plans offline trajectories suitable for both simulation and real-world deployment. Although the policy is sensitive to modeling uncertainties, accurate modeling enables successful sim-to-real transfer across different objects and rotation directions.
 </HighlightedSection>
 
 <h3 style="text-align: center">--------------- (ChocoBox) ---------------</h3>
@@ -276,7 +275,7 @@ This work proposes a learning-based approach to dynamic non-prehensile object tr
     <span slot="caption">Y-Axis|CCW|90 [8/10]</span>
   </Figure>
   <Figure slot="center">
-    <YouTubeVideo slot="figure" videoId="evSoU-eTDNY" />
+    <YouTubeVideo slot="figure" videoId="VnRZEr4tNbo" />
     <span slot="caption">Y-Axis|CCW|180 [2/10]</span>
   </Figure>
   <Figure slot="right">
